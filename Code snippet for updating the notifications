@@ -1,0 +1,33 @@
+
+var stop;
+
+ stop = $interval( function(){
+ // placeholder for scanning,identifying and connecting to wifis.
+  if( $rootScope.notificationState === 1){
+    $scope.text = "Identified homeWifi"
+    $rootScope.notificationState  = 2;
+    }else if( $rootScope.notificationState === 2){
+           $scope.text = "connecting to homeWifi"
+           $rootScope.notificationState  = 3;
+           }else if( $rootScope.notificationState === 3){
+                  $scope.text = "connected to homeWifi"
+                  $rootScope.notificationState =4;
+                  }else if( $rootScope.notificationState === 4){
+                  $scope.stopInterval();
+                  }
+          // call the foreground service updatenotifications.
+           cordova.plugins.notification.local.update({
+                         id: 1,
+                         text: $scope.text,
+                         icon: 'http://3.bp.blogspot.com/-Qdsy-GpempY/UU_BN9LTqSI/AAAAAAAAAMA/LkwLW2yNBJ4/s1600/supersu.png',//'res://icon',
+                         color: 'FF0000',
+                         json: { updated: true }
+           });
+ }, 10000);
+
+  $scope.stopInterval = function() {
+           if (angular.isDefined(stop)) {
+             $interval.cancel(stop);
+             stop = undefined;
+           }
+         };
