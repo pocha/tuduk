@@ -1,4 +1,4 @@
-### Setup ### 
+### Setup 
 
 You should have ionic setup on your PC 
 
