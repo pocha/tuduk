@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
  var foregroundService;
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers','starter-services'])
 .run(function($ionicPlatform, $rootScope) {
   // this is to keep track of the status of wifi connection.
   $rootScope.notificationState = 1
