@@ -16,8 +16,14 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('PlaylistsCtrl', function($scope,$interval,$rootScope,TUDUKCONSTANTS) {
-$scope.stopGettingData = true;
+.controller('PlaylistsCtrl', function($scope,$interval,$rootScope,TUDUKCONSTANTS,wifiFactory) {
+ // moved all the logic to wifiFactory.
+    // have only the ui relared logic here, like updated the data, connectinon status etc..
+    wifiFactory.scanAndConnectToWifi()//.then(function(wifiStatus){
+      //logic to update the ui.
+    })
+  
+  /*.stopGettingData = true;
 $rootScope.serviceStatus = TUDUKCONSTANTS.STOP
 
 //this is a promise object to be hold the $interval's return object.
@@ -64,7 +70,8 @@ $rootScope.serviceStatus = TUDUKCONSTANTS.STOP
              stop = undefined;
            }
          };
-
+*/
+  
   // callback functions for stopService
    function handleSuccess(data) {
               //success callback post setConfiguration
